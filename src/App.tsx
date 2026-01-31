@@ -8,14 +8,21 @@ interface Investment {
 }
 
 const investments: Investment[] = [
-  { id: 1, label: 'Vokālo pedagogu apmeklēšana', value: 15 },
-  { id: 2, label: 'Tērpa kopšana', value: 8 },
-  { id: 3, label: 'Individuālais laiks ar diriģentu', value: 20 },
-  { id: 4, label: '100% mēģinājuma apmeklējums', value: 25 },
-  { id: 5, label: 'Laicīga fonda naudas maksāšana', value: 10 },
-  { id: 6, label: 'Kora influencēšana sociālajos tīklos', value: 12 },
-  { id: 7, label: 'Talanta attīstīšana ārpus kora laika', value: 18 },
-  { id: 8, label: 'Palīdzēt Jolantai pieskatīt bērnus', value: 22 },
+  { id: 1, label: 'Vokālo pedagogu apmeklēšana', value: 19 },
+  { id: 2, label: 'Individuālais laiks ar diriģentu', value: 14 },
+  { id: 3, label: '100% mēģinājuma apmeklējums', value: 20 },
+  { id: 4, label: 'Lieks nošu eksemplārs blakussēdētājam', value: 5 },
+  { id: 5, label: 'Tērpa kopšana', value: 18 },
+  { id: 6, label: 'Laicīga fonda naudas maksāšana', value: 11 },
+  { id: 7, label: 'Talanta attīstīšana ārpus kora laika', value: 13 },
+  { id: 8, label: 'Paziņošana par visiem mēģinājumu kavējumiem septembra pirmajā mēģinājumā', value: 16 },
+  { id: 9, label: 'Pieteikšanās dziedāt solo', value: 16 },
+  { id: 10, label: 'Jolantas bērnu pieskatīšana', value: 9 },
+  { id: 11, label: 'Kora influencēšana sociālajos tīklos', value: 8 },
+  { id: 12, label: 'Personas datu ievade forumā', value: 10 },
+  { id: 13, label: 'Kora kalendāra sinhronizācija telefonā', value: 6 },
+  { id: 14, label: 'Matu pīšana pirms koncertiem (citam)', value: 7 },
+  { id: 15, label: 'Tvaika gludekļa iegāde', value: 5 },
 ];
 
 function App() {
@@ -109,7 +116,17 @@ function App() {
         animationRef.current = requestAnimationFrame(animate);
       } else {
         setIsAnimating(false);
-        const calculatedYears = Math.max(1, Math.min(10, Math.round(11 - growthRate / 10)));
+        const maxGrowth = 57;
+        const minGrowth = 16;
+        const maxYears = 10;
+        const minYears = 2;
+        const calculatedYears = Math.max(
+          minYears,
+          Math.min(
+            maxYears,
+            Math.round(minYears + ((maxGrowth - growthRate) / (maxGrowth - minGrowth)) * (maxYears - minYears))
+          )
+        );
         setYears(calculatedYears);
       }
     };
